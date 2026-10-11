@@ -1,5 +1,218 @@
-s.html not found." -ForegroundColor Red
->> }
-SUCCESS: Professional Market Terminal copied and verified.
-Ready to replace markets.html on GitHub.
-PS C:\Users\user>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e13">
+  <meta name="description" content="Choose crypto, Forex, and metals markets in the OC Trading Hub research terminal.">
+  <meta property="og:title" content="Market Terminal | OC Trading Hub">
+  <meta property="og:description" content="A multi-market research workspace for Solana crypto, Forex, and metals.">
+  <meta property="og:type" content="website">
+  <title>Market Terminal | OC Trading Hub</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="script.js" defer></script>
+  <style>
+    .terminal-hero{padding-bottom:38px}.terminal-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;align-items:start}
+    .terminal-panel{background:linear-gradient(145deg,rgba(16,27,34,.98),rgba(10,18,24,.98));border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 52px rgba(0,0,0,.16)}
+    .terminal-topline,.terminal-toolbar,.terminal-card-top,.terminal-section-head,.terminal-stat-row,.terminal-pair-actions{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .terminal-kicker{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .market-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:25px 0 18px;padding:5px;background:#080f14;border:1px solid var(--line);border-radius:14px;width:max-content;max-width:100%}
+    .market-tab{border:1px solid transparent;border-radius:10px;padding:10px 16px;background:transparent;color:var(--muted);font-weight:800;font-size:12px;letter-spacing:.03em}
+    .market-tab[aria-selected="true"]{background:var(--lime);color:#11180b;box-shadow:0 5px 18px rgba(196,255,117,.1)}
+    .terminal-controls{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(190px,1fr) auto;gap:12px;align-items:end}
+    .terminal-field label{display:block;margin-bottom:7px;color:var(--muted);font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    .terminal-field input,.terminal-field select{width:100%;min-height:45px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#080f14;color:var(--text);outline:none}
+    .terminal-field input:focus,.terminal-field select:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(196,255,117,.1)}
+    .terminal-hint{margin:11px 0 0;font-size:12px;color:var(--muted)}
+    .terminal-note{display:flex;gap:11px;padding:12px 14px;border:1px solid rgba(196,255,117,.18);border-radius:12px;background:rgba(196,255,117,.045);color:var(--muted);font-size:12px;margin-top:18px}
+    .terminal-note strong{color:var(--text)}.terminal-note .note-icon{color:var(--lime);font-size:16px;line-height:1.2}
+    .terminal-toolbar{margin:18px 0 14px;flex-wrap:wrap}.feed-status{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px}.feed-status i{width:8px;height:8px;display:inline-block;border-radius:50%;background:#718078;box-shadow:0 0 0 4px rgba(113,128,120,.12)}.feed-status.live i{background:var(--green);box-shadow:0 0 0 4px rgba(125,224,164,.12)}.feed-status.warn i{background:var(--orange);box-shadow:0 0 0 4px rgba(255,192,139,.12)}
+    .terminal-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-top:14px}.terminal-stat{min-width:0;padding:15px 15px 14px;border:1px solid var(--line);border-radius:13px;background:rgba(6,12,16,.43)}.terminal-stat span{display:block;color:var(--muted);font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}.terminal-stat strong{display:block;overflow-wrap:anywhere;font-size:clamp(15px,1.8vw,21px);line-height:1.35;font-weight:800}.terminal-stat small{display:block;color:var(--muted);font-size:11px;margin-top:5px}.terminal-stat .positive{color:var(--green)}.terminal-stat .negative{color:var(--red)}
+    .selected-title{font-size:clamp(22px,3vw,31px);letter-spacing:-.04em;line-height:1.2;margin:0}.selected-subtitle{color:var(--muted);font-size:12px;margin:7px 0 0;overflow-wrap:anywhere}.terminal-pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font:10px var(--mono);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.terminal-pill.good{color:var(--green);border-color:rgba(125,224,164,.25)}.terminal-pill.pending{color:var(--orange);border-color:rgba(255,192,139,.25)}
+    .terminal-section-head{margin:28px 0 13px;align-items:end}.terminal-section-head h2{margin:0;font-size:20px;letter-spacing:-.03em}.terminal-section-head p{margin:0;color:var(--muted);font-size:12px;max-width:420px}
+    .search-results{display:grid;gap:9px;margin-top:12px}.search-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:13px;background:rgba(6,12,16,.4)}.search-result strong{display:block;overflow-wrap:anywhere}.search-result small{display:block;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.search-result .result-meta{text-align:right;color:var(--muted);font-size:11px}.search-result button{margin-top:8px}
+    .terminal-side{display:grid;gap:15px}.side-value{font-size:17px;font-weight:800;overflow-wrap:anywhere}.side-copy{font-size:12px;color:var(--muted);margin:8px 0 0}.side-separator{height:1px;background:var(--line);margin:15px 0}.terminal-checklist{display:grid;gap:13px;margin-top:16px}.terminal-check{display:grid;grid-template-columns:25px 1fr;gap:10px}.terminal-check>span{display:grid;place-items:center;border:1px solid rgba(196,255,117,.2);border-radius:8px;width:25px;height:25px;color:var(--lime);font:11px var(--mono)}.terminal-check p{margin:1px 0 0;font-size:12px;color:var(--muted)}.terminal-check strong{display:block;color:var(--text);font-size:12px;margin-bottom:3px}
+    .chart-frame{position:relative;height:510px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0a1117}.chart-placeholder{height:100%;display:grid;place-items:center;text-align:center;padding:28px;color:var(--muted)}.chart-placeholder strong{display:block;color:var(--text);font-size:16px;margin-bottom:7px}.chart-placeholder p{max-width:440px;font-size:12px;margin:0 auto}.chart-placeholder .placeholder-mark{font-size:28px;color:var(--lime);margin-bottom:12px}
+    .terminal-chart-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:10px 2px 0;color:var(--muted);font-size:11px}.terminal-empty{border:1px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);font-size:13px}.terminal-disclaimer{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:11px;line-height:1.7}
+    .terminal-footer-quote{color:var(--muted);font-size:11px}.terminal-search-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:end}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:1000px){.terminal-layout{grid-template-columns:minmax(0,1fr)}.terminal-side{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-controls{grid-template-columns:minmax(0,1fr) minmax(170px,1fr)}.terminal-controls .terminal-action{grid-column:1/-1}.terminal-controls .terminal-action button{width:100%}}
+    @media(max-width:650px){.terminal-panel{padding:16px;border-radius:16px}.terminal-controls{grid-template-columns:1fr}.terminal-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-side{grid-template-columns:1fr}.market-tabs{width:100%}.market-tab{flex:1;padding:10px 8px}.chart-frame{height:420px}.terminal-topline,.terminal-card-top{align-items:flex-start;flex-direction:column}.terminal-section-head{align-items:flex-start;flex-direction:column}.search-result{grid-template-columns:1fr}.search-result .result-meta{text-align:left}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body data-page="markets">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="OC Trading Hub home"><span class="brand-mark">OC<i></i></span><span class="brand-text">OC <b>TRADING HUB</b><small>MARKETS · SYSTEMS · AUTOMATION</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="nav-links" id="primaryNav" aria-label="Main navigation"><a data-nav="home" href="index.html">Overview</a><a data-nav="markets" href="markets.html">Markets</a><details class="nav-dropdown"><summary>Systems <span>⌄</span></summary><div class="dropdown-menu"><a href="solana.html">Solana Research</a><a href="forex.html">MT5 &amp; Forex</a><a href="ai-systems.html">AI Systems</a><a href="automation.html">Custom Automation</a></div></details><a data-nav="risk" href="risk-lab.html">Risk Lab</a><a data-nav="tools" href="tools.html">Tools</a><a data-nav="services" href="services.html">Services</a><a class="nav-cta" href="contact.html">Contact OC ↗</a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero section terminal-hero"><div class="container page-hero-grid">
+      <div><div class="eyebrow"><span class="pulse-dot"></span> OC TERMINAL / MULTI-MARKET RESEARCH</div><h1>Choose your market.<br><span class="gradient-text">Read the evidence.</span></h1><p class="hero-lead">A single research workspace for selected Solana pools, Forex pairs, and precious metals. Select an instrument, review its available data, and verify conditions before making a decision.</p><div class="hero-actions"><a class="button button-primary" href="#terminal">Open market selector ↓</a><a class="button button-quiet" href="risk-lab.html">Open Risk Lab ↗</a></div></div>
+      <aside class="page-status-card"><span class="status-label">WORKSPACE STATUS</span><strong>Public research mode</strong><p>No wallet connection, broker login, or order routing is enabled on this page.</p><div class="status-divider"></div><span class="status-label">DATA SOURCES</span><strong id="sourceOverview">Crypto: DEX Screener</strong><p id="sourceOverviewNote">Forex and metals charts use TradingView embeds. Data availability and delays depend on the instrument and provider.</p></aside>
+    </div></section>
+
+    <section class="section tight-section" id="terminal"><div class="container terminal-layout">
+      <div class="terminal-main">
+        <section class="terminal-panel" aria-labelledby="selector-heading">
+          <div class="terminal-topline"><div><div class="terminal-kicker">01 / MARKET SELECTOR</div><h2 id="selector-heading" style="margin:6px 0 0;font-size:22px;letter-spacing:-.035em">What do you want to analyse?</h2></div><span class="terminal-pill">Read-only</span></div>
+          <div class="market-tabs" role="tablist" aria-label="Market category">
+            <button type="button" class="market-tab" id="tab-crypto" role="tab" aria-selected="true" aria-controls="marketWorkspace" data-market-mode="crypto">Crypto</button>
+            <button type="button" class="market-tab" id="tab-forex" role="tab" aria-selected="false" aria-controls="marketWorkspace" data-market-mode="forex">Forex</button>
+            <button type="button" class="market-tab" id="tab-metals" role="tab" aria-selected="false" aria-controls="marketWorkspace" data-market-mode="metals">Metals</button>
+          </div>
+          <div id="marketWorkspace">
+            <div class="terminal-controls">
+              <div class="terminal-field"><label for="marketSearch">Find a market</label><input id="marketSearch" type="search" autocomplete="off" placeholder="Search pair, e.g. EUR/USD or WIF/SOL" aria-describedby="searchHint"></div>
+              <div class="terminal-field"><label for="pairSelect">Choose instrument</label><select id="pairSelect" aria-label="Choose trading pair"></select></div>
+              <div class="terminal-action"><button type="button" class="button button-primary" id="refreshMarket">Refresh data ↻</button></div>
+            </div>
+            <p class="terminal-hint" id="searchHint">Choose a featured Solana pool, or search a token/pair to discover matching Solana pools. Forex and metals use selectable chart symbols.</p>
+            <div class="terminal-note" id="marketNotice"><span class="note-icon">ⓘ</span><div><strong>Research only.</strong> Displayed data is informational, not a signal. Pool liquidity, slippage, fees, provider delays, and token authenticity must be checked independently.</div></div>
+          </div>
+        </section>
+
+        <section class="terminal-panel" style="margin-top:16px" aria-labelledby="selected-market-title">
+          <div class="terminal-card-top"><div><div class="terminal-kicker" id="selectedKicker">CRYPTO / SELECTED POOL</div><h2 class="selected-title" id="selected-market-title">SOL / USDC</h2><p class="selected-subtitle" id="selectedSubtitle">Loading public market data…</p></div><span class="terminal-pill" id="selectedSourcePill">DEX SCREENER</span></div>
+          <div class="terminal-stats" id="marketStats" aria-live="polite">
+            <div class="terminal-stat"><span>USD price</span><strong id="statPrice">Loading…</strong><small id="statPriceNote">Base token price</small></div>
+            <div class="terminal-stat"><span>24h change</span><strong id="statChange">—</strong><small>Reported provider metric</small></div>
+            <div class="terminal-stat"><span>Pool liquidity</span><strong id="statLiquidity">—</strong><small>Reported USD value</small></div>
+            <div class="terminal-stat"><span>24h volume</span><strong id="statVolume">—</strong><small>Reported trading activity</small></div>
+          </div>
+          <div class="terminal-toolbar"><span class="feed-status" id="feedStatus"><i></i><span>Requesting public market data…</span></span><span class="terminal-footer-quote" id="marketUpdatedAt">Not updated yet</span></div>
+          <div class="terminal-pair-actions"><a class="button button-quiet button-small" id="openMarket" href="https://docs.dexscreener.com/api/reference" target="_blank" rel="noopener noreferrer">Open source ↗</a><span class="terminal-footer-quote" id="pairAddressLabel"></span></div>
+        </section>
+
+        <section id="cryptoSearchSection" class="terminal-panel" style="margin-top:16px" aria-labelledby="crypto-search-title">
+          <div class="terminal-section-head" style="margin-top:0"><div><div class="terminal-kicker">02 / TOKEN DISCOVERY</div><h2 id="crypto-search-title">Find a Solana pair</h2></div><p>Search a token name, symbol, contract address, or pair. Verify the contract before relying on a result.</p></div>
+          <form id="terminalTokenSearchForm" class="terminal-search-form"><div class="terminal-field"><label for="terminalTokenQuery">Token or pair search</label><input id="terminalTokenQuery" type="search" maxlength="120" placeholder="e.g. BONK, JUP/SOL, or a mint address"></div><button class="button button-primary" type="submit" id="terminalSearchTokensButton">Search pairs ↗</button></form>
+          <p class="terminal-hint" id="terminalTokenSearchStatus" aria-live="polite">Search results are public provider records; symbol matches alone do not prove authenticity.</p>
+          <div class="search-results" id="terminalTokenSearchResults"></div>
+        </section>
+
+        <section id="chartSection" class="terminal-panel" style="margin-top:16px" aria-labelledby="chart-title" hidden>
+          <div class="terminal-section-head" style="margin-top:0"><div><div class="terminal-kicker">02 / INTERACTIVE CHART</div><h2 id="chart-title">Market chart</h2></div><div class="terminal-field" style="min-width:125px"><label for="chartTimeframe">Timeframe</label><select id="chartTimeframe"><option value="15">15 minutes</option><option value="60" selected>1 hour</option><option value="240">4 hours</option><option value="D">1 day</option><option value="W">1 week</option></select></div></div>
+          <div class="chart-frame" id="chartFrame"><div class="chart-placeholder"><div><div class="placeholder-mark">⌁</div><strong>Loading interactive chart…</strong><p>The chart is supplied by TradingView. Available symbols and data delays vary by provider and market.</p></div></div></div>
+          <div class="terminal-chart-meta"><span id="chartSourceLabel">Chart source: TradingView</span><a id="openTradingView" href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">Open chart provider ↗</a></div>
+        </section>
+        <div class="terminal-disclaimer">OC Trading Hub is a research and education interface. It does not provide investment advice, guarantee accuracy or returns, connect this page to a broker account, or place orders. Public crypto metrics may be incomplete, stale, manipulated, or pool-specific. TradingView market-data availability and delays depend on the symbol and provider. Always verify important figures independently.</div>
+      </div>
+
+      <aside class="terminal-side">
+        <section class="terminal-panel"><div class="terminal-kicker">SYSTEM / DATA FEEDS</div><h2 style="font-size:19px;margin:7px 0 0">Connection status</h2><div class="side-separator"></div><div class="terminal-stat-row"><div><div class="terminal-kicker">CRYPTO</div><div class="side-value" id="cryptoFeedSide">Public API</div></div><span class="terminal-pill good">Available</span></div><div class="side-separator"></div><div class="terminal-stat-row"><div><div class="terminal-kicker">FOREX</div><div class="side-value">TradingView chart</div></div><span class="terminal-pill pending">Embed</span></div><p class="side-copy">Forex charts are embedded for analysis; this is not your broker's executable bid/ask feed.</p><div class="side-separator"></div><div class="terminal-stat-row"><div><div class="terminal-kicker">ORDER ROUTING</div><div class="side-value">Disabled</div></div><span class="terminal-pill">Read-only</span></div></section>
+        <section class="terminal-panel"><div class="terminal-kicker">RESEARCH CHECKLIST</div><h2 style="font-size:19px;margin:7px 0 0">Before a decision</h2><div class="terminal-checklist"><div class="terminal-check"><span>01</span><p><strong>Confirm the instrument</strong>Check pair, chain, pool, and token contract.</p></div><div class="terminal-check"><span>02</span><p><strong>Check data freshness</strong>Confirm the time and source; missing values are not zero.</p></div><div class="terminal-check"><span>03</span><p><strong>Measure trade impact</strong>Review spread, depth, slippage, and costs.</p></div><div class="terminal-check"><span>04</span><p><strong>Define risk first</strong>Set invalidation and maximum acceptable loss.</p></div></div><a class="button button-quiet" style="margin-top:18px;width:100%" href="risk-lab.html">Open Risk Lab ↗</a></section>
+        <section class="terminal-panel"><div class="terminal-kicker">QUICK LINKS</div><h2 style="font-size:19px;margin:7px 0 0">Research tools</h2><div class="sequence-list" style="margin-top:12px"><div><span>↗</span><div><h3><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a></h3><p>Charts and technical analysis.</p></div></div><div><span>↗</span><div><h3><a href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer">DEX Screener</a></h3><p>Solana pool data and token pairs.</p></div></div><div><span>↗</span><div><h3><a href="https://docs.dexscreener.com/api/reference" target="_blank" rel="noopener noreferrer">Data documentation</a></h3><p>Understand public API fields.</p></div></div></div></section>
+      </aside>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand-col"><a class="brand footer-brand" href="index.html"><span class="brand-mark">OC<i></i></span><span class="brand-text">OC <b>TRADING HUB</b><small>MARKETS · SYSTEMS · AUTOMATION</small></span></a><p>Practical trading technology. Research first. Test carefully. Keep risk visible.</p></div><div><h3 class="footer-heading">Explore</h3><a href="markets.html">Market terminal</a><a href="solana.html">Solana research</a><a href="forex.html">MT5 &amp; Forex</a><a href="ai-systems.html">AI systems</a></div><div><h3 class="footer-heading">Workspace</h3><a href="risk-lab.html">Risk Lab</a><a href="tools.html">Tools directory</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div><div><h3 class="footer-heading">Follow OC</h3><a data-instagram-link href="contact.html#instagram-status" aria-disabled="true">Instagram profile pending</a><a href="https://github.com/Abraham-001/OC-Trading-Hub" target="_blank" rel="noopener noreferrer">GitHub repository ↗</a><p class="footer-small">The business Instagram URL will be connected once its exact public profile link is added.</p></div></div><div class="container footer-bottom"><p>© <span id="year">2026</span> OC Trading Hub. All rights reserved.</p><p>For information and research only. Not financial advice. Trading involves risk, including loss of capital.</p><a href="disclaimer.html">Important disclosures</a></div></footer>
+
+  <script>
+  (() => {
+    'use strict';
+    const DEX_SEARCH = 'https://api.dexscreener.com/latest/dex/search?q=';
+    const DEX_TOKEN_PAIRS = 'https://api.dexscreener.com/token-pairs/v1/solana/';
+    const CACHE_MS = 60000;
+    const MINT = {
+      SOL:'So11111111111111111111111111111111111111112',
+      USDC:'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+      BONK:'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
+      JUP:'JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN',
+      WIF:'EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm'
+    };
+    const MARKETS = {
+      crypto: [
+        {id:'SOL/USDC',label:'SOL / USDC',base:'SOL',quote:'USDC',baseMint:MINT.SOL,quoteMint:MINT.USDC},
+        {id:'BONK/SOL',label:'BONK / SOL',base:'BONK',quote:'SOL',baseMint:MINT.BONK,quoteMint:MINT.SOL},
+        {id:'JUP/SOL',label:'JUP / SOL',base:'JUP',quote:'SOL',baseMint:MINT.JUP,quoteMint:MINT.SOL},
+        {id:'WIF/SOL',label:'WIF / SOL',base:'WIF',quote:'SOL',baseMint:MINT.WIF,quoteMint:MINT.SOL}
+      ],
+      forex: [
+        {id:'EURUSD',label:'EUR / USD',symbol:'FX:EURUSD',description:'Euro / US dollar'},
+        {id:'GBPUSD',label:'GBP / USD',symbol:'FX:GBPUSD',description:'British pound / US dollar'},
+        {id:'USDJPY',label:'USD / JPY',symbol:'FX:USDJPY',description:'US dollar / Japanese yen'},
+        {id:'USDCHF',label:'USD / CHF',symbol:'FX:USDCHF',description:'US dollar / Swiss franc'},
+        {id:'USDCAD',label:'USD / CAD',symbol:'FX:USDCAD',description:'US dollar / Canadian dollar'},
+        {id:'AUDUSD',label:'AUD / USD',symbol:'FX:AUDUSD',description:'Australian dollar / US dollar'},
+        {id:'NZDUSD',label:'NZD / USD',symbol:'FX:NZDUSD',description:'New Zealand dollar / US dollar'},
+        {id:'EURGBP',label:'EUR / GBP',symbol:'FX:EURGBP',description:'Euro / British pound'},
+        {id:'EURJPY',label:'EUR / JPY',symbol:'FX:EURJPY',description:'Euro / Japanese yen'},
+        {id:'GBPJPY',label:'GBP / JPY',symbol:'FX:GBPJPY',description:'British pound / Japanese yen'},
+        {id:'AUDJPY',label:'AUD / JPY',symbol:'FX:AUDJPY',description:'Australian dollar / Japanese yen'},
+        {id:'EURCHF',label:'EUR / CHF',symbol:'FX:EURCHF',description:'Euro / Swiss franc'}
+      ],
+      metals: [
+        {id:'XAUUSD',label:'XAU / USD',symbol:'OANDA:XAUUSD',description:'Gold / US dollar'},
+        {id:'XAGUSD',label:'XAG / USD',symbol:'OANDA:XAGUSD',description:'Silver / US dollar'}
+      ]
+    };
+    const state = {mode:'crypto', selected:{crypto:'SOL/USDC',forex:'EURUSD',metals:'XAUUSD'}, pool:null, chartSymbol:'', chartInterval:'60', customPair:false, requestId:0};
+    const $ = id => document.getElementById(id);
+    const safeText = (v,max=240) => String(v ?? '').replace(/[\u0000-\u001f\u007f]/g,' ').trim().slice(0,max);
+    const nvalue = v => v === null || v === undefined || v === '' ? NaN : Number(v);
+    function money(v, maxDigits) {
+      const n=nvalue(v); if(!Number.isFinite(n)) return '—';
+      const abs=Math.abs(n);
+      if(n!==0 && abs<0.0001){ const dp=Math.min(12,Math.max(6,Math.ceil(-Math.log10(abs))+2)); return '$'+n.toLocaleString('en-US',{minimumFractionDigits:dp,maximumFractionDigits:dp,useGrouping:false}); }
+      return '$'+n.toLocaleString('en-US',{maximumFractionDigits:maxDigits ?? (abs<0.01?8:abs<1?4:2)});
+    }
+    function compact(v) { const n=nvalue(v); if(!Number.isFinite(n)) return '—'; const a=Math.abs(n); if(a>=1e9)return '$'+(n/1e9).toFixed(2)+'B'; if(a>=1e6)return '$'+(n/1e6).toFixed(2)+'M'; if(a>=1e3)return '$'+(n/1e3).toFixed(1)+'K'; return money(n); }
+    function pct(v) { const n=nvalue(v); return Number.isFinite(n)?(n>0?'+':'')+n.toFixed(2)+'%':'—'; }
+    function stamp() { return new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date()); }
+    function cacheRead(key){try{const x=JSON.parse(localStorage.getItem('ochub:terminal:'+key)||'null');return x&&Date.now()-x.time<CACHE_MS?x.data:null}catch{return null}}
+    function cacheWrite(key,data){try{localStorage.setItem('ochub:terminal:'+key,JSON.stringify({time:Date.now(),data}))}catch{}}
+    function setFeed(text,kind=''){const n=$('feedStatus');n.className='feed-status'+(kind?' '+kind:'');const dot=document.createElement('i');dot.setAttribute('aria-hidden','true');n.replaceChildren(dot);const span=document.createElement('span');span.textContent=text;n.append(span)}
+    function optionsFor(mode){return MARKETS[mode]||[]}
+    function current(){return optionsFor(state.mode).find(x=>x.id===state.selected[state.mode])||optionsFor(state.mode)[0]}
+    function setStat(id,value,note){$(id).textContent=value;if(note!==undefined){const noteNode=$(id+'Note');if(noteNode)noteNode.textContent=note}}
+    function populateSelect(filter=''){
+      const sel=$('pairSelect'),list=optionsFor(state.mode),f=filter.trim().toLowerCase();
+      const matches=list.filter(x=>(x.label+' '+x.id+' '+(x.description||'')).toLowerCase().includes(f));
+      sel.replaceChildren();
+      matches.forEach(item=>{const opt=document.createElement('option');opt.value=item.id;opt.textContent=item.label+(item.description?' — '+item.description:'');sel.append(opt)});
+      if(!matches.length){const opt=document.createElement('option');opt.value='';opt.textContent='No matching listed market';sel.append(opt);return}
+      const desired=matches.some(x=>x.id===state.selected[state.mode])?state.selected[state.mode]:matches[0].id;sel.value=desired;
+    }
+    function setMode(mode){if(!MARKETS[mode])return;state.mode=mode;state.pool=null;state.customPair=false;
+      document.querySelectorAll('[data-market-mode]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.marketMode===mode)));
+      $('marketSearch').value='';$('marketSearch').placeholder=mode==='crypto'?'Search pair, e.g. EUR/USD or WIF/SOL':mode==='forex'?'Filter listed pairs, e.g. GBP or JPY':'Filter metals, e.g. gold or silver';
+      $('cryptoSearchSection').hidden=mode!=='crypto';$('chartSection').hidden=mode==='crypto';
+      $('searchHint').textContent=mode==='crypto'?'Choose a featured Solana pool, or search a token/pair to discover matching Solana pools. Forex and metals use selectable chart symbols.':mode==='forex'?'Choose from supported major and cross-currency pairs. Quotes and executable broker spreads are not provided by this chart embed.':'Choose a precious metal chart. These charts are for research and are not an executable broker quote.';
+      $('selectedKicker').textContent=mode==='crypto'?'CRYPTO / SELECTED SOLANA POOL':mode==='forex'?'FOREX / SELECTED CURRENCY PAIR':'METALS / SELECTED INSTRUMENT';$('selectedSourcePill').textContent=mode==='crypto'?'DEX SCREENER':'TRADINGVIEW CHART';
+      $('sourceOverview').textContent=mode==='crypto'?'Crypto: DEX Screener':mode==='forex'?'Forex: TradingView chart':'Metals: TradingView chart';$('sourceOverviewNote').textContent=mode==='crypto'?'Selected Solana pools are checked against configured mint addresses. Custom search results still require independent token verification.':'Chart data availability and delay depend on the selected symbol and TradingView provider. This is not broker execution data.';
+      populateSelect();renderSelected();
+    }
+    async function getPools(item,force=false){const key='pool:'+item.baseMint;if(!force){const cached=cacheRead(key);if(cached)return cached}const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);try{const res=await fetch(DEX_TOKEN_PAIRS+encodeURIComponent(item.baseMint),{headers:{Accept:'application/json'},signal:controller.signal,cache:'no-store'});if(!res.ok)throw new Error('Market-data provider returned HTTP '+res.status+'.');const data=await res.json();if(!Array.isArray(data))throw new Error('Unexpected market-data response.');cacheWrite(key,data);return data}catch(e){if(e.name==='AbortError')throw new Error('The market-data request timed out.');throw e}finally{clearTimeout(timer)}}
+    function exactPair(p,item){return String(p?.chainId||'').toLowerCase()==='solana'&&String(p?.baseToken?.address||'')===item.baseMint&&String(p?.quoteToken?.address||'')===item.quoteMint}
+    function poolLiquidity(p){return nvalue(p?.liquidity?.usd)||0}
+    async function refreshCrypto(force=false){const item=current();if(!item)return;const req=++state.requestId;state.pool=null;setFeed('Requesting '+item.label+' market data…');$('selected-market-title').textContent=item.label;$('selectedSubtitle').textContent='Looking up the exact base and quote token mints.';setStatsLoading();
+      try{const pools=await getPools(item,force);if(req!==state.requestId)return;const pair=pools.filter(p=>exactPair(p,item)).sort((a,b)=>poolLiquidity(b)-poolLiquidity(a))[0]||null;if(!pair){showUnavailable('No exact matching Solana pool was returned. Check the selected pair or try token search.');return}state.pool=pair;state.customPair=false;renderCryptoPair(pair,item);}
+      catch(e){if(req!==state.requestId)return;showUnavailable(safeText(e.message||'Market data unavailable.'))}
+    }
+    function setStatsLoading(){setStat('statPrice','Loading…');setStat('statChange','—');setStat('statLiquidity','—');setStat('statVolume','—')}
+    function showUnavailable(message){setStat('statPrice','—','No verified value');setStat('statChange','—');setStat('statLiquidity','—');setStat('statVolume','—');$('selectedSubtitle').textContent=message;setFeed(message,'warn');$('pairAddressLabel').textContent='';$('openMarket').href='https://docs.dexscreener.com/api/reference';$('openMarket').textContent='View API docs ↗';$('marketUpdatedAt').textContent='Not updated';}
+    function renderCryptoPair(pair,item,custom=false){$('selected-market-title').textContent=(pair.baseToken?.symbol||item.base)+' / '+(pair.quoteToken?.symbol||item.quote);const baseAddr=safeText(pair.baseToken?.address||'',120),quoteAddr=safeText(pair.quoteToken?.address||'',120);$('selectedSubtitle').textContent=(pair.baseToken?.name||item.base)+' / '+(pair.quoteToken?.name||item.quote)+' · Solana · '+safeText(pair.dexId||'DEX pool',50)+(custom?' · Search result — verify token contract':' · Canonical mint match');
+      setStat('statPrice',money(pair.priceUsd),'USD price of base token');const change=nvalue(pair.priceChange?.h24);const changeEl=$('statChange');changeEl.textContent=pct(change);changeEl.className=Number.isFinite(change)?(change<0?'negative':'positive'):'';setStat('statLiquidity',compact(pair.liquidity?.usd));setStat('statVolume',compact(pair.volume?.h24));
+      setFeed(custom?'Search pool loaded — verify the token contract.':'Exact mint match loaded from DEX Screener.','live');$('marketUpdatedAt').textContent='Updated '+stamp();$('pairAddressLabel').textContent='Base: '+(baseAddr.length>20?baseAddr.slice(0,7)+'…'+baseAddr.slice(-5):baseAddr)+' · Quote: '+(quoteAddr.length>20?quoteAddr.slice(0,7)+'…'+quoteAddr.slice(-5):quoteAddr);const u=goodDexUrl(pair.url);$('openMarket').href=u||'https://dexscreener.com/';$('openMarket').textContent=u?'Open selected pool ↗':'Open DEX Screener ↗';}
+    function goodDexUrl(value){try{const u=new URL(value||'');return u.protocol==='https:'&&(u.hostname==='dexscreener.com'||u.hostname.endsWith('.dexscreener.com'))?u.href:''}catch{return ''}}
+    function renderChart(item){const interval=$('chartTimeframe').value||'60';state.chartInterval=interval;state.chartSymbol=item.symbol;$('selected-market-title').textContent=item.label;$('selectedSubtitle').textContent=item.description+' · Chart symbol '+item.symbol;$('selectedSourcePill').textContent='TRADINGVIEW EMBED';
+      setStat('statPrice','See chart','Embedded provider quote');setStat('statChange','—','Not independently calculated');setStat('statLiquidity','N/A','Forex/metals are not DEX pools');setStat('statVolume','N/A','Not supplied by this chart card');$('statChange').className='';setFeed('Interactive chart requested from TradingView.','warn');$('marketUpdatedAt').textContent='Chart timeframe: '+({'15':'15 minutes','60':'1 hour','240':'4 hours','D':'1 day','W':'1 week'}[interval]||interval);
+      $('pairAddressLabel').textContent='Broker-specific bid/ask spread is not available in this embed.';$('openMarket').href='https://www.tradingview.com/chart/?symbol='+encodeURIComponent(item.symbol);$('openMarket').textContent='Open on TradingView ↗';$('chart-title').textContent=item.label+' · Interactive chart';$('chartSourceLabel').textContent='TradingView embed · '+item.symbol;$('openTradingView').href='https://www.tradingview.com/chart/?symbol='+encodeURIComponent(item.symbol);
+      const frame=$('chartFrame');frame.replaceChildren();const wrap=document.createElement('div');wrap.className='tradingview-widget-container';wrap.style.cssText='height:100%;width:100%';const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';widget.style.cssText='height:calc(100% - 24px);width:100%';wrap.append(widget);const credit=document.createElement('div');credit.className='tradingview-widget-copyright';credit.style.cssText='font:11px sans-serif;color:#9aa9a6;padding:2px 8px';credit.append(document.createTextNode('Chart by '));const a=document.createElement('a');a.href='https://www.tradingview.com/';a.target='_blank';a.rel='noopener noreferrer';a.textContent='TradingView';credit.append(a);wrap.append(credit);const script=document.createElement('script');script.type='text/javascript';script.async=true;script.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';script.text=JSON.stringify({autosize:true,symbol:item.symbol,interval,timezone:'Etc/UTC',theme:'dark',style:'1',locale:'en',withdateranges:true,hide_side_toolbar:false,allow_symbol_change:false,save_image:false,calendar:false,details:false,hotlist:false,support_host:'https://www.tradingview.com'});wrap.append(script);frame.append(wrap);
+    }
+    function renderSelected(){const item=current();if(!item)return;if(state.mode==='crypto')refreshCrypto(false);else renderChart(item)}
+    async function searchTokens(query){const q=safeText(query,120);if(!q){$('terminalTokenSearchStatus').textContent='Enter a token name, symbol, pair, or contract address.';return}const btn=$('terminalSearchTokensButton');btn.disabled=true;btn.textContent='Searching…';$('terminalTokenSearchResults').replaceChildren();$('terminalTokenSearchStatus').textContent='Searching public Solana pool data…';try{const res=await fetch(DEX_SEARCH+encodeURIComponent(q),{headers:{Accept:'application/json'},cache:'no-store'});if(!res.ok)throw new Error('Provider returned HTTP '+res.status+'.');const data=await res.json();const pools=(Array.isArray(data?.pairs)?data.pairs:[]).filter(p=>String(p.chainId||'').toLowerCase()==='solana').sort((a,b)=>poolLiquidity(b)-poolLiquidity(a)).slice(0,8);if(!pools.length){$('terminalTokenSearchStatus').textContent='No Solana pools returned for this search.';const empty=document.createElement('div');empty.className='terminal-empty';empty.textContent='No matching Solana pools were found. Try a contract/mint address or different spelling.';$('terminalTokenSearchResults').append(empty);return}pools.forEach((p,index)=>{const row=document.createElement('article');row.className='search-result';const left=document.createElement('div');const title=document.createElement('strong');title.textContent=(p.baseToken?.symbol||'Unknown')+' / '+(p.quoteToken?.symbol||'Unknown');const details=document.createElement('small');const ba=safeText(p.baseToken?.address||'',100),qa=safeText(p.quoteToken?.address||'',100);details.textContent=(p.dexId||'DEX pool')+' · Solana · Base '+ba.slice(0,6)+'…'+ba.slice(-4)+' · Quote '+qa.slice(0,6)+'…'+qa.slice(-4);left.append(title,details);const right=document.createElement('div');right.className='result-meta';const stats=document.createElement('div');stats.textContent='Price '+money(p.priceUsd)+' · Liq '+compact(p.liquidity?.usd);const use=document.createElement('button');use.type='button';use.className='button button-quiet button-small';use.textContent='Inspect pool ↗';use.addEventListener('click',()=>{const pairItem={base:p.baseToken?.symbol||'TOKEN',quote:p.quoteToken?.symbol||'TOKEN',baseMint:p.baseToken?.address||'',quoteMint:p.quoteToken?.address||'',id:'custom-'+index,label:(p.baseToken?.symbol||'TOKEN')+' / '+(p.quoteToken?.symbol||'TOKEN')};state.mode='crypto';state.selected.crypto='SOL/USDC';state.pool=p;state.customPair=true;document.querySelectorAll('[data-market-mode]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.marketMode==='crypto')));$('pairSelect').value='SOL/USDC';$('selectedKicker').textContent='CRYPTO / SEARCHED POOL';$('selectedSourcePill').textContent='UNVERIFIED SEARCH RESULT';renderCryptoPair(p,pairItem,true);$('selectedSubtitle').textContent+=(p.pairAddress?' · Pool '+p.pairAddress.slice(0,6)+'…'+p.pairAddress.slice(-4):'');window.scrollTo({top:$('selected-market-title').getBoundingClientRect().top+window.scrollY-120,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});right.append(stats,use);row.append(left,right);$('terminalTokenSearchResults').append(row)});$('terminalTokenSearchStatus').textContent=pools.length+' Solana pool results. The list is ranked by reported liquidity; this is not a safety ranking.'}catch(e){$('terminalTokenSearchStatus').textContent='Search failed: '+safeText(e.message||'Unknown error.');const empty=document.createElement('div');empty.className='terminal-empty';empty.textContent='Could not load search results. Check your connection and retry.';$('terminalTokenSearchResults').append(empty)}finally{btn.disabled=false;btn.textContent='Search pairs ↗'}}
+    function boot(){document.querySelectorAll('[data-market-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.marketMode)));$('pairSelect').addEventListener('change',()=>{state.selected[state.mode]=$('pairSelect').value;state.customPair=false;renderSelected()});$('marketSearch').addEventListener('input',e=>{populateSelect(e.target.value)});$('refreshMarket').addEventListener('click',()=>{const chosen=$('pairSelect').value;if(!chosen){setFeed('No listed instrument matches this filter. Clear the search or choose a pair.','warn');return}state.selected[state.mode]=chosen;state.customPair=false;if(state.mode==='crypto')refreshCrypto(true);else renderChart(current())});$('terminalTokenSearchForm').addEventListener('submit',e=>{e.preventDefault();searchTokens($('terminalTokenQuery').value)});$('chartTimeframe').addEventListener('change',()=>{if(state.mode!=='crypto')renderChart(current())});$('marketSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const sel=$('pairSelect');if(sel.value){state.selected[state.mode]=sel.value;renderSelected()}}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('marketSearch').value='';populateSelect()}});populateSelect();renderSelected()}
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  })();
+  </script>
+</body>
+</html>
