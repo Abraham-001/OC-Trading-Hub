@@ -1,0 +1,18 @@
+OC TRADING HUB — WEBSITE FILES
+
+Files:
+- index.html       Main website page
+- styles.css       Responsive dark trading-tech design
+- script.js        Mobile navigation and current footer year
+- favicon.svg      Browser tab icon
+
+No build step or package installation is needed. Keep all four files together in the root of the repository.
+
+Recommended deployment for this project: Cloudflare Pages connected to the GitHub repository.
+When configuring the Pages project for these plain HTML/CSS/JS files:
+- Production branch: main
+- Framework preset: None (or None/Other)
+- Build command: leave blank
+- Build output directory: / (root) or . depending on the dashboard field
+
+The site includes only a Telegram contact link and does not collect form data. Do not add API keys, broker credentials, wallet private keys, or seed phrases to these files or the public repository.
