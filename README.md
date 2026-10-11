@@ -1,4 +1,4 @@
-# 🚀 OC Trading Hub
+#  OC Trading Hub
 
 ### Trading Technology • AI Automation • Crypto • Forex • Developer Services
 
@@ -10,9 +10,9 @@ Our vision is to create one central hub where traders, developers, and businesse
 
 ---
 
-## 🌐 Our Ecosystem
+##  Our Ecosystem
 
-### 🟣 1. Solana & Crypto Trading
+###  1. Solana & Crypto Trading
 
 Tools and systems for researching and automating activity in crypto markets.
 
@@ -27,7 +27,7 @@ Planned capabilities:
 
 All automated strategies should be tested before any real funds are placed at risk.
 
-### 📈 2. MT5 & Forex Automation
+###  2. MT5 & Forex Automation
 
 Technology for traders who use MetaTrader 5 and supported trading brokers.
 
@@ -42,7 +42,7 @@ Planned capabilities:
 
 Broker compatibility and trading functionality will depend on the specific integration.
 
-### 🧠 3. AI Trading Systems
+###  3. AI Trading Systems
 
 Research and development of AI-assisted tools that help traders examine market information.
 
@@ -58,7 +58,7 @@ Planned capabilities:
 
 AI-generated signals are not guarantees of future market performance.
 
-### ⚙️ 4. Custom Trading Bots & Automation
+###  4. Custom Trading Bots & Automation
 
 Custom software development for individuals and businesses seeking trading-related automation.
 
@@ -76,7 +76,7 @@ Every project should have a defined scope, appropriate testing, and documented l
 
 ---
 
-## 🛠️ Trading Tools Directory
+##  Trading Tools Directory
 
 OC Trading Hub aims to maintain a directory of useful trading platforms, bots, analytics tools, and infrastructure providers.
 
@@ -97,7 +97,7 @@ Users should independently evaluate providers before connecting wallets, grantin
 
 ---
 
-## 💼 Development Services
+##  Development Services
 
 OC Trading Hub plans to offer custom development services for traders, creators, and businesses.
 
@@ -122,7 +122,7 @@ Final pricing depends on requirements, complexity, integrations, testing, and su
 
 ---
 
-## 🔐 Security & Risk Management
+##  Security & Risk Management
 
 Security and responsible development are fundamental to the project.
 
@@ -141,11 +141,11 @@ Crypto, forex, and leveraged trading can result in substantial losses, including
 
 ---
 
-## 🗺️ Development Roadmap
+##  Development Roadmap
 
 The project will be developed in stages.
 
-* [x] Create the public GitHub repository.
+* [ ] Create the public GitHub repository.
 * [ ] Publish the project overview and core documentation.
 * [ ] Build the OC Trading Hub public website.
 * [ ] Create a structured trading tools directory.
@@ -160,7 +160,7 @@ The roadmap may change as development progresses. Each major component will be d
 
 ---
 
-## 📬 Contact OC Trading Hub
+##  Contact OC Trading Hub
 
 **Telegram:** [@OCtradinghubofficial](https://t.me/OCtradinghubofficial)
 
@@ -170,7 +170,7 @@ Never send passwords, private keys, wallet recovery phrases, or other sensitive 
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Suggestions, bug reports, and development ideas are welcome.
 
@@ -185,7 +185,7 @@ Please do not publish credentials, private keys, seed phrases, or confidential i
 
 ---
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 OC Trading Hub is a software development and trading technology project. Repository content is provided for educational and informational purposes and does not constitute financial, investment, legal, or tax advice.
 
