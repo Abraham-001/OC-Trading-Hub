@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#0b1115"/>
-  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#c1ff6b" stroke-opacity=".8"/>
-  <path d="M27 20a13 13 0 1 0 0 24" fill="none" stroke="#c1ff6b" stroke-width="5" stroke-linecap="round"/>
-  <path d="M34 22c3-4 10-3 12 2 2 4-1 8-6 9l-4 1 8 10" fill="none" stroke="#c1ff6b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="51" cy="12" r="4" fill="#c1ff6b"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="3" y="3" width="58" height="58" rx="16" fill="#0d151b" stroke="#bfff70" stroke-width="2"/><text x="14" y="39" font-family="monospace" font-size="22" font-weight="700" fill="#c4ff75">OC</text><circle cx="52" cy="12" r="3" fill="#c4ff75"/></svg>
